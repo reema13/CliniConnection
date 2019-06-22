@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "146708372820",
+    "firebase_url": "https://cliniconnection.firebaseio.com",
+    "project_id": "cliniconnection",
+    "storage_bucket": "cliniconnection.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146708372820:android:9da19654eabbab15",
+        "android_client_info": {
+          "package_name": "com.cliniconnection.cliniconnection"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "146708372820-aiu2jdq65a0hsbuh3sbbfmcsi6jddmg2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cliniconnection.cliniconnection",
+            "certificate_hash": "ace89adbb146fe2b7e04d5135bb8628e9b18bc60"
+          }
+        },
+        {
+          "client_id": "146708372820-erbnbkvg09qe992cho1sr64v3hptmpj1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdEXjsjnzxA2ZC43m-5ZhVKOQyYQ5Uxuw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "146708372820-erbnbkvg09qe992cho1sr64v3hptmpj1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
