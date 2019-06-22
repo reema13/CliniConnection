@@ -98,6 +98,31 @@
                 android:inputType="textPassword"
                 android:hint="Re-enter Password"/>
         </android.support.design.widget.TextInputLayout>
+        <!--radio button-->
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RadioButton
+                android:id="@+id/radio1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Are you a Doctor?"
+                android:textColor="#000"
+                android:textAppearance="?android:textAppearanceMedium"
+                />
+            <RadioButton
+                android:id="@+id/radio2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Are you a Patient?"
+                android:textColor="#000"
+                android:textAppearance="?android:textAppearanceMedium"
+                />
+
+
+        </RadioGroup>
 
         <!-- Signup Button -->
         <android.support.v7.widget.AppCompatButton

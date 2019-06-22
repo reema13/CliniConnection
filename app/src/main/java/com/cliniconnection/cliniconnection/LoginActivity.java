@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.link_signup)
     TextView _signupLink;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +83,8 @@ public class LoginActivity extends AppCompatActivity {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        // TODO: Implement your own authentication logic here.
+        // login -----------------
+
         mAuth.signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -99,8 +101,10 @@ public class LoginActivity extends AppCompatActivity {
                             }
 
                         } else {
-                            LoginActivity.this.startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            LoginActivity.this.finish();
+                            Toast.makeText(getApplicationContext(),"Authintication valid",Toast.LENGTH_LONG).show();
+
+                            LoginActivity.this.startActivity(new Intent(LoginActivity.this, ConnectwithDoctor.class));
+                           // LoginActivity.this.finish();
                         }
                     }
                 });

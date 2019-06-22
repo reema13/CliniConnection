@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,10 @@ public class SignupActivity extends AppCompatActivity {
     Button _signupButton;
     @BindView(R.id.link_login)
     TextView _loginLink;
+    @BindView(R.id.radio1)
+    RadioButton _radio1;
+    @BindView(R.id.radio2)
+    RadioButton _radio2;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,7 +58,9 @@ public class SignupActivity extends AppCompatActivity {
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 signup();
+
             }
         });
 
@@ -61,7 +68,7 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Finish the registration screen and return to the Login activity
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
                 startActivity(intent);
                 finish();
                 overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
@@ -92,9 +99,9 @@ public class SignupActivity extends AppCompatActivity {
         String password = _passwordText.getText().toString();
         String reEnterPassword = _reEnterPasswordText.getText().toString();
 
-        // TODO: Implement your own signup logic here.
 
-        //register user
+
+        //-----------------------------------------register user------------------------------------
         mAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -103,13 +110,13 @@ public class SignupActivity extends AppCompatActivity {
 
                         if (!task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(),"Authintication failed",Toast.LENGTH_LONG).show();
-                         //   SignupActivity.this.showToast("Authentication failed. " + task.getException());
                         } else {
-                            SignupActivity.this.startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                            SignupActivity.this.startActivity(new Intent(SignupActivity.this, ConnectwithDoctor.class));
                             SignupActivity.this.finish();
                         }
                     }
                 });
+
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
