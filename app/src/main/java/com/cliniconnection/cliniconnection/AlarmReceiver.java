@@ -3,23 +3,23 @@ package com.cliniconnection.cliniconnection;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.widget.Toast;
-import android.content.ComponentName;
 
-import static android.support.v4.content.WakefulBroadcastReceiver.startWakefulService;
-
-public class AlarmReceiver extends BroadcastReceiver {
+public class AlarmReceiver extends BroadcastReceiver
+{
     @Override
-    public void onReceive(Context context, Intent intent) {
-        Toast.makeText(context, "ALARM!! ALARM!!", Toast.LENGTH_SHORT).show();
-
-        //Stop sound service to play sound for alarm
-        context.startService(new Intent(context, AlarmSoundService.class));
-
-        //This will send a notification message and show notification in notification tray
-        ComponentName comp = new ComponentName(context.getPackageName(),
-                AlarmNotificationService.class.getName());
-        startWakefulService(context, (intent.setComponent(comp)));
-
+    public void onReceive(Context context, Intent intent)
+    {
+        Toast.makeText(context, "Alarm! Wake up! Wake up!", Toast.LENGTH_LONG).show();
+        Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+        if (alarmUri == null)
+        {
+            alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        }
+        Ringtone ringtone = RingtoneManager.getRingtone(context, alarmUri);
+        ringtone.play();
     }
 }

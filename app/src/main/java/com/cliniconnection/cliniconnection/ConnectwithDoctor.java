@@ -32,9 +32,9 @@ public class ConnectwithDoctor extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if(v.getId()==R.id.button1){
-            Intent call = new Intent(Intent.ACTION_CALL);
-            call.setData(Uri.parse("tel"+""));
-            startActivity(call);
+            Intent makecall = new Intent(ConnectwithDoctor.this, MakeCall.class);
+
+            startActivity(makecall);
         }
 
 

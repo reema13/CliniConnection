@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
 
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mmAuth;
 
     @BindView(R.id.input_email)
     EditText _emailText;
@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        mAuth = FirebaseAuth.getInstance();
+        mmAuth = FirebaseAuth.getInstance();
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // login -----------------
 
-        mAuth.signInWithEmailAndPassword(email,password)
+        mmAuth.signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

@@ -30,14 +30,14 @@ public class LetsChat extends AppCompatActivity {
     private FirebaseAnalytics mFirebaseAnalytics;
     private FirebaseListAdapter<ChatMessage> adapter;
     public static int SIGN_IN_REQUEST_CODE = 10;
-    private FirebaseAuth mAuth;
+    //private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.letschat);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-        mAuth = FirebaseAuth.getInstance();
+       // mAuth = FirebaseAuth.getInstance();
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                /*new AuthUI.IdpConfig.EmailBuilder().build(),
                 new AuthUI.IdpConfig.PhoneBuilder().build(),

@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
 public class SignupActivity extends AppCompatActivity {
 
     private static final String TAG = "SignupActivity";
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mmAuth;
 
     @BindView(R.id.input_name)
     EditText _nameText;
@@ -53,7 +53,7 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
         ButterKnife.bind(this);
 
-        mAuth = FirebaseAuth.getInstance();
+        mmAuth = FirebaseAuth.getInstance();
 
         _signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +102,7 @@ public class SignupActivity extends AppCompatActivity {
 
 
         //-----------------------------------------register user------------------------------------
-        mAuth.createUserWithEmailAndPassword(email,password)
+        mmAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -111,7 +111,7 @@ public class SignupActivity extends AppCompatActivity {
                         if (!task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(),"Authintication failed",Toast.LENGTH_LONG).show();
                         } else {
-                            SignupActivity.this.startActivity(new Intent(SignupActivity.this, ConnectwithDoctor.class));
+                            Toast.makeText(getApplicationContext(),"Authintication Done",Toast.LENGTH_LONG).show();
                             SignupActivity.this.finish();
                         }
                     }

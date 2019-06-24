@@ -1,118 +1,64 @@
 package com.cliniconnection.cliniconnection;
 
+
 import android.app.AlarmManager;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RadioButton;
+import android.widget.TextClock;
+import android.widget.TimePicker;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SetAlarm extends AppCompatActivity {
-
-    //Pending intent instance
-    private PendingIntent pendingIntent;
-
-    private RadioButton secondsRadioButton, minutesRadioButton, hoursRadioButton;
-
-    //Alarm Request Code
-    private static final int ALARM_REQUEST_CODE = 133;
-
+    TimePicker alarmTimePicker;
+    PendingIntent pendingIntent;
+    AlarmManager alarmManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setalarm);
+        alarmTimePicker = (TimePicker) findViewById(R.id.timePicker);
+        alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+    }
+    public void OnToggleClicked(View view)
+    {
+        long time;
+        if (((ToggleButton) view).isChecked())
+        {
+            Toast.makeText(SetAlarm.this, "ALARM ON", Toast.LENGTH_SHORT).show();
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, alarmTimePicker.getCurrentHour());
+            calendar.set(Calendar.MINUTE, alarmTimePicker.getCurrentMinute());
+            Intent intent = new Intent(this, AlarmReceiver.class);
+            pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
 
-        //Find id of all radio buttons
-        secondsRadioButton = (RadioButton) findViewById(R.id.seconds_radio_button);
-        minutesRadioButton = (RadioButton) findViewById(R.id.minutes_radio_button);
-        hoursRadioButton = (RadioButton) findViewById(R.id.hours_radio_button);
-
-        /* Retrieve a PendingIntent that will perform a broadcast */
-        Intent alarmIntent = new Intent(SetAlarm.this, AlarmReceiver.class);
-        pendingIntent = PendingIntent.getBroadcast(SetAlarm.this, ALARM_REQUEST_CODE, alarmIntent, 0);
-
-        //Find id of Edit Text
-        final EditText editText = (EditText) findViewById(R.id.input_interval_time);
-
-        //Set On CLick over start alarm button
-        findViewById(R.id.start_alarm_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String getInterval = editText.getText().toString().trim();//get interval from edittext
-
-                //check interval should not be empty and 0
-                if (!getInterval.equals("") && !getInterval.equals("0"))
-                    //finally trigger alarm manager
-                    triggerAlarmManager(getTimeInterval(getInterval));
-
+            time=(calendar.getTimeInMillis()-(calendar.getTimeInMillis()%60000));
+            if(System.currentTimeMillis()>time)
+            {
+                if (calendar.AM_PM == 0)
+                    time = time + (1000*60*60*12);
+                else
+                    time = time + (1000*60*60*24);
             }
-        });
-
-        //set on click over stop alarm button
-        findViewById(R.id.stop_alarm_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Stop alarm manager
-                stopAlarmManager();
-            }
-        });
-
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, time, 10000, pendingIntent);
+        }
+        else
+        {
+            alarmManager.cancel(pendingIntent);
+            Toast.makeText(SetAlarm.this, "ALARM OFF", Toast.LENGTH_SHORT).show();
+        }
     }
-
-    //get time interval to trigger alarm manager
-    private int getTimeInterval(String getInterval) {
-        int interval = Integer.parseInt(getInterval);//convert string interval into integer
-
-        //Return interval on basis of radio button selection
-        if (secondsRadioButton.isChecked())
-            return interval;
-        if (minutesRadioButton.isChecked())
-            return interval * 60;//convert minute into seconds
-        if (hoursRadioButton.isChecked()) return interval * 60 * 60;//convert hours into seconds
-
-        //else return 0
-        return 0;
-    }
-
-
-    //Trigger alarm manager with entered time interval
-    public void triggerAlarmManager(int alarmTriggerTime) {
-        // get a Calendar object with current time
-        Calendar cal = Calendar.getInstance();
-        // add alarmTriggerTime seconds to the calendar object
-        cal.add(Calendar.SECOND, alarmTriggerTime);
-
-        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);//get instance of alarm manager
-        manager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);//set alarm manager with entered timer by converting into milliseconds
-
-        Toast.makeText(this, "Alarm Set for " + alarmTriggerTime + " seconds.", Toast.LENGTH_SHORT).show();
-    }
-
-    //Stop/Cancel alarm manager
-    public void stopAlarmManager() {
-
-        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        manager.cancel(pendingIntent);//cancel the alarm manager of the pending intent
-
-
-        //Stop the Media Player Service to stop sound
-        stopService(new Intent(SetAlarm.this, AlarmSoundService.class));
-
-        //remove the notification from notification tray
-        NotificationManager notificationManager = (NotificationManager) this
-                .getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.cancel(AlarmNotificationService.NOTIFICATION_ID);
-
-        Toast.makeText(this, "Alarm Canceled/Stop by User.", Toast.LENGTH_SHORT).show();
-    }
-
-
 }

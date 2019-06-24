@@ -1,83 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
-    tools:context="com.cliniconnection.cliniconnection.SetAlarm">
+    android:orientation="vertical">
 
-    <TextView
+    <TimePicker
+        android:id="@+id/timePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Alarm Input"
-        android:textColor="@color/cardview_shadow_start_color"
-        android:textSize="13sp" />
+        android:layout_gravity="center" />
 
-    <RadioGroup
-        android:id="@+id/time_type_selection_radio_group"
-        android:layout_width="match_parent"
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="5dp">
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:checked="false"
+        android:onClick="OnToggleClicked"
+        android:background="@color/primary_darker"/>
 
-        <RadioButton
-            android:id="@+id/seconds_radio_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
-            android:gravity="center_vertical"
-            android:text="Seconds"
-            android:textColor="@color/primary_dark" />
-
-        <RadioButton
-            android:id="@+id/minutes_radio_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="Minutes"
-            android:textColor="@color/primary_dark" />
-
-        <RadioButton
-            android:id="@+id/hours_radio_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="Hours"
-            android:textColor="@color/primary_dark" />
-    </RadioGroup>
-
-    <EditText
-        android:id="@+id/input_interval_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:padding="10dp"
-        android:textColor="@android:color/white"
-        android:textColorHint="@android:color/darker_gray"
-        android:textSize="14sp" />
-
-    <Button
-        android:id="@+id/start_alarm_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/btn_rounded"
-        android:text="Start Alarm"
-        android:textColor="@android:color/white"
-        android:textSize="14sp" />
-
-    <Button
-        android:id="@+id/stop_alarm_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/btn_rounded"
-        android:text="Stop Alarm"
-        android:textColor="@android:color/white"
-        android:textSize="14sp" />
 </LinearLayout>
