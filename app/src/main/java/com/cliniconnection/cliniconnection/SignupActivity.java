@@ -112,7 +112,13 @@ public class SignupActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(),"Authintication failed",Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(getApplicationContext(),"Authintication Done",Toast.LENGTH_LONG).show();
-                            SignupActivity.this.finish();
+                            if(_radio1.isChecked()){
+                                SignupActivity.this.startActivity(new Intent(SignupActivity.this, SeeLogs.class));
+                            }
+                            else if (_radio2.isChecked()){
+                                SignupActivity.this.startActivity(new Intent(SignupActivity.this, ConnectwithDoctor.class));
+                            }
+                            // SignupActivity.this.finish();
                         }
                     }
                 });

@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,23 +24,23 @@ import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity {
 
+
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
-
-    private FirebaseAuth mmAuth;
-
     @BindView(R.id.input_email)
     EditText _emailText;
-    @BindView(R.id.input_password) EditText _passwordText;
+    @BindView(R.id.input_password)
+    EditText _passwordText;
     @BindView(R.id.btn_login)
     Button _loginButton;
     @BindView(R.id.link_signup)
     TextView _signupLink;
-
+    private FirebaseAuth mmAuth;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         mmAuth = FirebaseAuth.getInstance();
@@ -85,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // login -----------------
 
-        mmAuth.signInWithEmailAndPassword(email,password)
+        mmAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -94,17 +96,17 @@ public class LoginActivity extends AppCompatActivity {
                         if (!task.isSuccessful()) {
 
                             if (password.length() < 6) {
-                                Toast.makeText(getApplicationContext(),"short password",Toast.LENGTH_LONG).show();
-                               // password.setError(LoginActivity.this.getString(R.string.minimum_password));
+                                Toast.makeText(getApplicationContext(), "short password", Toast.LENGTH_LONG).show();
+                                // password.setError(LoginActivity.this.getString(R.string.minimum_password));
                             } else {
                                 Toast.makeText(LoginActivity.this, LoginActivity.this.getString(R.string.auth_failed), Toast.LENGTH_SHORT).show();
                             }
 
                         } else {
-                            Toast.makeText(getApplicationContext(),"Authintication valid",Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Authintication valid", Toast.LENGTH_LONG).show();
 
-                            LoginActivity.this.startActivity(new Intent(LoginActivity.this, ConnectwithDoctor.class));
-                           // LoginActivity.this.finish();
+                            LoginActivity.this.startActivity(new Intent(LoginActivity.this, SelectUser.class));
+                            // LoginActivity.this.finish();
                         }
                     }
                 });
@@ -133,11 +135,11 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    @Override
+   /* @Override
     public void onBackPressed() {
         // Disable going back to the MainActivity
         moveTaskToBack(true);
-    }
+    }*/
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
