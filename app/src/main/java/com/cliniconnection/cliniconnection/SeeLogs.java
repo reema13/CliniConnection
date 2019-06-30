@@ -22,11 +22,26 @@ public class SeeLogs extends AppCompatActivity {
         _log = findViewById(R.id.logs);
 
 
-        _log.setOnClickListener(new View.OnClickListener() {
+        _info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(SeeLogs.this,EnterInfo.class));
             }
         });
+
+        _chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SeeLogs.this, LetsChat.class));
+            }
+        });
+
+        _meds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(SeeLogs.this, MedicationLogs.class));
+            }
+        });
+
     }
 }

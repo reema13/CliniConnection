@@ -20,7 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="call"
-        android:text="Call" />
+        android:text="Call"
+        android:background="@drawable/btn_rounded"/>
 
 
 
@@ -28,7 +29,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/contacts"
-        android:text="Load contacts" />
+        android:text="Load contacts"
+        android:background="@drawable/btn_rounded"/>
 
 
     <ListView

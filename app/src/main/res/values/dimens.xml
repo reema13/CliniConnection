@@ -49,9 +49,9 @@
     <dimen name="toolbar_bell_size">24dp</dimen>
     <dimen name="navigation_header">140dp</dimen>
 
-    //Alhasan start
+
     <dimen name="edit_abstract_size">100dp</dimen>
-    //Alhasan end
+
     <dimen name="custom_weather_icon">48dp</dimen>
     <dimen name="main_ad_text_width">128dp</dimen>
 
