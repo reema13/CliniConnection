@@ -3,6 +3,7 @@ package com.cliniconnection.cliniconnection.DataBase.Patient;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 
 import java.util.List;
@@ -36,4 +37,6 @@ public class PatientViewModel extends AndroidViewModel {
     public void delete(Patient data){
         repository.delete(data);
     }
+
+
 }

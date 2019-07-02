@@ -50,7 +50,7 @@ public class EnterInfo extends AppCompatActivity {
              public void onClick(View v) {
                  //Log.d(TAG, "onClick: pressed!");
 
-                 startActivity(new Intent(EnterInfo.this,AddBasic.class));
+                 startActivity(new Intent(EnterInfo.this,NewPatient.class));
 
              }
          });

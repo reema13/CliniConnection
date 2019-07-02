@@ -21,7 +21,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
-                android:hint="Patient Name" />
+                android:hint="Patient Name"
+                android:textColor="@color/cardview_shadow_start_color"/>
         </android.support.design.widget.TextInputLayout>
 
         <!-- Address Label -->
@@ -34,7 +35,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPostalAddress"
-                android:hint="Address" />
+                android:hint="Address"
+                android:textColor="@color/cardview_shadow_start_color"/>
         </android.support.design.widget.TextInputLayout>
 
 
@@ -49,7 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:hint="Status" />
+                android:hint="Status"
+                android:textColor="@color/cardview_shadow_start_color"/>
         </android.support.design.widget.TextInputLayout>
 
 
@@ -63,7 +66,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:hint="Mobile Number" />
+                android:hint="Mobile Number"
+                android:textColor="@color/cardview_shadow_start_color"/>
         </android.support.design.widget.TextInputLayout>
 
         <!--  Meds Label -->
@@ -76,7 +80,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:hint="Medication type" />
+                android:hint="Medication type"
+                android:textColor="@color/cardview_shadow_start_color"/>
         </android.support.design.widget.TextInputLayout>
 
         <!--  Meds Label -->
@@ -89,7 +94,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:hint="More Info" />
+                android:hint="More Info/Add to history"
+                android:textColor="@color/cardview_shadow_start_color"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton

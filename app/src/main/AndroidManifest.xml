@@ -74,7 +74,7 @@
         </activity>
         <receiver android:name=".AlarmReceiver" >
         </receiver>
-        <activity android:name=".AddBasic">
+        <activity android:name=".NewPatient">
 
         </activity>
         <activity android:name=".EnterInfo">

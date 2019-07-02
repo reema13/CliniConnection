@@ -5,6 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import com.cliniconnection.cliniconnection.DataBase.Doctor.Doctor;
 
@@ -26,10 +27,32 @@ public class Patient {
     public String phone;
     @ColumnInfo(name = "doctor_id")
     public Long doctor_id;
+    @ColumnInfo(name = "status")
+    public String status;
+    @ColumnInfo(name = "meds")
+    public String meds;
 
 
     public Patient(){
 
+    }
+
+
+
+    public String getMeds() {
+        return meds;
+    }
+
+    public void setMeds(String meds) {
+        this.meds = meds;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Long getPatient_id() {
