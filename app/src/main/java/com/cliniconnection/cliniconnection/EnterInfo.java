@@ -1,5 +1,6 @@
 package com.cliniconnection.cliniconnection;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +11,11 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.cliniconnection.cliniconnection.DataBase.Patient.Patient;
+import com.cliniconnection.cliniconnection.DataBase.PatientDataBase;
+
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class EnterInfo extends AppCompatActivity {
@@ -22,7 +27,7 @@ public class EnterInfo extends AppCompatActivity {
 
     FloatingActionButton fab;
 
- //   ArrayList<String> users;
+List<Patient>patientList;
 
 
     @Override
@@ -30,29 +35,36 @@ public class EnterInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.enter_patient_info);
 
-        recyclerView = findViewById(R.id.recycler_view);
+        final PatientDataBase db = Room.databaseBuilder(getApplicationContext(), PatientDataBase.class,"patient")
+                .build();
 
-        /*users = new ArrayList<>();//to be modified
-        for (int i = 0; i<10; i++){
 
-            users.add("Reema #"+ i);
 
-        }*/
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        Runnable r = new Runnable(){
+            @Override
+            public void run() {
+                patientList = (List<Patient>) db.patientDAO().getAll();
+                recyclerView= (RecyclerView)findViewById(R.id.recycler_view);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getApplication()));
+                adapter= new PatientListAdapter(patientList);
+                adapter.notifyDataSetChanged();
+                recyclerView.setAdapter(adapter);
 
-   //     adapter = new UserAdapter(users); //to pass data here
+            }
+        };
 
-        recyclerView.setAdapter(adapter);
+        Thread newThread= new Thread(r);
+        newThread.start();
 
-        fab=findViewById(R.id.floatfab);
-         fab.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 //Log.d(TAG, "onClick: pressed!");
+        fab=(FloatingActionButton)findViewById(R.id.floatfab);
 
-                 startActivity(new Intent(EnterInfo.this,NewPatient.class));
-
-             }
-         });
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(EnterInfo.this,NewPatient.class);
+                startActivity(i);
+                finish();
+            }
+        });
     }
 }

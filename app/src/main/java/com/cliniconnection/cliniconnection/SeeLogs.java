@@ -38,7 +38,15 @@ public class SeeLogs extends AppCompatActivity {
         _meds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(SeeLogs.this, MedicationLogs.class));
+
+                //startActivity(new Intent(SeeLogs.this, EnterMed.class));
+            }
+        });
+
+        _session.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SeeLogs.this, AMain.class));
             }
         });
 

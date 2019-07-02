@@ -13,47 +13,41 @@ import com.cliniconnection.cliniconnection.DataBase.Patient.Patient;
 import java.util.Collections;
 import java.util.List;
 
-public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.PatientViewHolder> {
+public class PatientListAdapter extends RecyclerView.Adapter<PatientListAdapter.ViewHolder> {
 
-    public class PatientViewHolder extends RecyclerView.ViewHolder{
+    List<Patient> patientList;
 
-    private final TextView patientItem;
-        public PatientViewHolder(@NonNull View itemView) {
-            super(itemView);
-            patientItem = itemView.findViewById(R.id.textView);
-        }
-
-    }
-
-
-    private final LayoutInflater mInflater;
-    private List<Patient> name = Collections.emptyList();
-    PatientListAdapter(Context context) {
-        mInflater = LayoutInflater.from(context);
-    }
-
-
-    @NonNull
-    @Override
-    public PatientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.enter_patient_info, parent, false);
-        return new PatientViewHolder(itemView);
+    public PatientListAdapter(List<Patient> patientList) {
+        this.patientList = patientList;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PatientViewHolder holder, int position) {
-        Patient current = name.get(position);
-        holder.patientItem.setText(current.getName());
+    public PatientListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.enter_patient_info,parent,false);
+        return new ViewHolder(view);
     }
 
-    void setPatient(List<Patient> patient) {
-        name = patient;
-        notifyDataSetChanged();
+
+
+    @Override
+    public void onBindViewHolder(PatientListAdapter.ViewHolder holder, int position) {
+        holder.name.setText(patientList.get(position).getName());
+        holder.status.setText(patientList.get(position).getStatus());
     }
+
     @Override
     public int getItemCount() {
-        return name.size();
+        return patientList.size();
     }
 
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        public TextView name;
+        public TextView status;
 
+        public ViewHolder(View itemView) {
+            super(itemView);
+            name = itemView.findViewById(R.id.patient_name);
+            status= itemView.findViewById(R.id.patient_status);
+        }
+    }
 }
