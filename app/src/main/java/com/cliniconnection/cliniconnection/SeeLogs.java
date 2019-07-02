@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class SeeLogs extends AppCompatActivity {
-    Button _meds, _chat, _info, _session;
+    Button _call, _chat, _info, _session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,7 +16,7 @@ public class SeeLogs extends AppCompatActivity {
 
         _chat = findViewById(R.id.chat);
         _info = findViewById(R.id.info);
-        _meds = findViewById(R.id.meds);
+        _call = findViewById(R.id.call);
         _session = findViewById(R.id.sessionbtn);
 
 
@@ -35,18 +35,18 @@ public class SeeLogs extends AppCompatActivity {
             }
         });
 
-        _meds.setOnClickListener(new View.OnClickListener() {
+        _call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //startActivity(new Intent(SeeLogs.this, EnterMed.class));
+               startActivity(new Intent(SeeLogs.this, MakeCall.class));
             }
         });
 
         _session.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SeeLogs.this, AMain.class));
+                startActivity(new Intent(SeeLogs.this, EnterInfo.class));
             }
         });
 

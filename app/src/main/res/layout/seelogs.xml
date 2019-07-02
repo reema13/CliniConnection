@@ -48,12 +48,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content">
             <Button
-                android:id="@+id/meds"
+                android:id="@+id/call"
                 android:layout_marginTop="20dp"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/btn_rounded"
-                android:text="Medications"/>
+                android:text="Call"/>
 
             <Button
                 android:id="@+id/sessionbtn"

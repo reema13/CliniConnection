@@ -86,12 +86,7 @@
 
         </activity>
 
-        <activity android:name=".AMain">
 
-        </activity>
-        <activity android:name=".AddItemActivity">
-
-        </activity>
 
 
 
