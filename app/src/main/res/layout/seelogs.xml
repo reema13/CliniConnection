@@ -26,17 +26,10 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/btn_rounded"
-                android:text="Doctor Info"
+                android:text="Patient Info"
 
                 />
 
-            <Button
-                android:id="@+id/logs"
-                android:layout_marginTop="60dp"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/btn_rounded"
-                android:text="Patient Log"/>
 
             <Button
                 android:id="@+id/chat"
@@ -72,16 +65,7 @@
                 android:background="@drawable/btn_rounded"
                 />
 
-            <Button
-                android:id="@+id/button5"
-                android:textColor="#000000"
-                android:text="see logs"
-                android:layout_alignParentBottom="true"
-                android:background="@drawable/btn_rounded"
-                android:layout_marginTop="60dp"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                />
+
 
 
         </LinearLayout>

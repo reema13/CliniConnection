@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:hint="Patient Name"
-                android:textColor="@color/cardview_shadow_start_color"/>
+                android:textColor="#000000"/>
         </android.support.design.widget.TextInputLayout>
 
         <!-- Address Label -->
@@ -31,12 +31,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/patient_address"
+            <EditText android:id="@+id/patient_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPostalAddress"
-                android:hint="Address"
-                android:textColor="@color/cardview_shadow_start_color"/>
+                android:hint="Age"
+                android:textColor="#000000"/>
         </android.support.design.widget.TextInputLayout>
 
 
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:hint="Status"
-                android:textColor="@color/cardview_shadow_start_color"/>
+                android:textColor="#000000"/>
         </android.support.design.widget.TextInputLayout>
 
 
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:hint="Mobile Number"
-                android:textColor="@color/cardview_shadow_start_color"/>
+                android:textColor="#000000"/>
         </android.support.design.widget.TextInputLayout>
 
         <!--  Meds Label -->
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:hint="Medication type"
-                android:textColor="@color/cardview_shadow_start_color"/>
+                android:textColor="#000000"/>
         </android.support.design.widget.TextInputLayout>
 
         <!--  Meds Label -->
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:hint="More Info/Add to history"
-                android:textColor="@color/cardview_shadow_start_color"/>
+                android:textColor="#000000"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton

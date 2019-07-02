@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class SeeLogs extends AppCompatActivity {
-    Button _log,_meds, _chat, _info, _session, _seelogs;
+    Button _meds, _chat, _info, _session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,9 +17,8 @@ public class SeeLogs extends AppCompatActivity {
         _chat = findViewById(R.id.chat);
         _info = findViewById(R.id.info);
         _meds = findViewById(R.id.meds);
-        _seelogs = findViewById(R.id.button5);
         _session = findViewById(R.id.sessionbtn);
-        _log = findViewById(R.id.logs);
+
 
 
         _info.setOnClickListener(new View.OnClickListener() {
@@ -32,7 +31,7 @@ public class SeeLogs extends AppCompatActivity {
         _chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SeeLogs.this, LetsChat.class));
+                startActivity(new Intent(SeeLogs.this, Chat.class));
             }
         });
 

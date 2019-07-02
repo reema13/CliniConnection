@@ -14,16 +14,19 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity {
-
+//    String USER_TYPE_1 = "Patient";
+//    String USER_TYPE_2 = "Doctor";
 
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
@@ -42,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
+
+
         ButterKnife.bind(this);
         mmAuth = FirebaseAuth.getInstance();
 
@@ -104,6 +109,24 @@ public class LoginActivity extends AppCompatActivity {
 
                         } else {
                             Toast.makeText(getApplicationContext(), "Authintication valid", Toast.LENGTH_LONG).show();
+
+//                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//                            if (user != null) {
+//                                Intent intent = null;
+//                                if(user.equals(USER_TYPE_1)){
+//                                    LoginActivity.this.startActivity(new Intent(LoginActivity.this, ConnectwithDoctor.class));
+//                                }else if(user.equals(USER_TYPE_2)){
+//                                    LoginActivity.this.startActivity(new Intent(LoginActivity.this, SeeLogs.class));
+//                                }
+//
+//                                if(intent!=null){
+//                                    startActivity(intent);
+//                                }
+//                            } else {
+//                                // User is signed out
+//                                Log.d(TAG, "onAuthStateChanged:signed_out");
+//                            }
+
 
                             LoginActivity.this.startActivity(new Intent(LoginActivity.this, SelectUser.class));
                             // LoginActivity.this.finish();
@@ -174,5 +197,7 @@ public class LoginActivity extends AppCompatActivity {
 
         return valid;
     }
+
+
 }
 
