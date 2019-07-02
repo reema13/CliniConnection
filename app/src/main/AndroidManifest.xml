@@ -49,18 +49,7 @@
         <activity android:name=".TextMessage">
 
         </activity>
-        <activity android:name=".LetsChat">
 
-        </activity>
-
-
-        <activity android:name=".Message">
-
-        </activity>
-
-        <activity android:name=".ChatMessage">
-
-        </activity>
         <activity android:name=".SetAlarm">
 
         </activity>
@@ -78,6 +67,22 @@
 
         </activity>
         <activity android:name=".EnterInfo">
+
+        </activity>
+
+        <activity android:name=".Chat">
+
+        </activity>
+
+        <activity android:name=".Register">
+
+        </activity>
+
+        <activity android:name=".Login">
+
+        </activity>
+
+        <activity android:name=".Users">
 
         </activity>
 

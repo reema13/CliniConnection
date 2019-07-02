@@ -50,7 +50,7 @@ public class ConnectwithDoctor extends AppCompatActivity implements View.OnClick
             startActivity(setalarm);
         }
         if(v.getId()==R.id.button4){
-            Intent chat = new Intent(ConnectwithDoctor.this, LetsChat.class);
+            Intent chat = new Intent(ConnectwithDoctor.this, Register.class);
 
             startActivity(chat);
         }
